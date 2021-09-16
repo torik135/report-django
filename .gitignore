@@ -1,8 +1,11 @@
 .vscode
 db.sqlite3
+
+# python
 *.pyc
 
 .DS_Store
 
 # remove later
 dropzone
+

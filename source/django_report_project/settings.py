@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'customers',
     'products',
     'profiles',
-    'resports',
-    'sales'
+    'reports',
+    'sales',
     # 3rd Party
-    'crispy_form'
+    'crispy_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstap4'
