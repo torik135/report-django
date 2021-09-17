@@ -24,16 +24,11 @@ HOME
 
 {%if sales_df %}
 {{sales_df|safe}}
+<hr>
+{{positions_df|safe}}
 {%else%}
 <h3>no data</h3>
 {% endif %}
 
 </div>
 {% endblock content %}
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
-</script>

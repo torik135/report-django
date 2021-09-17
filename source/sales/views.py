@@ -6,6 +6,7 @@ from .forms import SaleSearchForm
 
 def home_view(request):
     sales_df = None
+    positions_df = None
 
     form = SaleSearchForm(request.POST or None)
     title = 'home'
@@ -19,15 +20,32 @@ def home_view(request):
         queryset = Sale.objects.filter(created__date__lte=date_to, created__date__gte=date_from)
         if len(queryset) > 0:
             sales_df = pd.DataFrame(queryset.values())
+            positions_data = []
+            for sale in queryset:
+                for pos in sale.get_positions():
+                    obj = {
+                        'position_id':pos.id,
+                        'product': pos.product.name,
+                        'quantity': pos.quantity,
+                        'price': pos.price
+                    }
+
+                    positions_data.append(obj)
+
+            positions_df = pd.DataFrame(positions_data)
+            print('positions_df')
+            print(positions_df)
 
             sales_df = sales_df.to_html()
-            print(sales_df)
+            positions_df = positions_df.to_html()
+            # print(sales_df)
         else: print('query err!')
 
     context = {
         'title': title,
         'form': form,
         'sales_df': sales_df,
+        'positions_df': positions_df,
     }
     return render(request, 'sales/home.html', context=context)
 
