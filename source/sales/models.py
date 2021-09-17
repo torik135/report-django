@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.base import Model
 from django.utils import timezone
+from django.shortcuts import reverse
 from products.models import Product
 from customers.models import Customer
 from profiles.models import Profiles
@@ -43,6 +44,9 @@ class Sale(models.Model):
 
     def get_positions(self):
         return self.positions.all()
+
+    def get_absolute_url(self):
+        return reverse('sales:detail', kwargs={'pk': self.pk})
 
     def __str__(self) -> str:
         return " transaction id {} with total price {}".format(self.transaction_id, self.total_price)

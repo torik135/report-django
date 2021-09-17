@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+sale list
+{% endblock title %}
+
+
+{% block content %}
+<h1>
+sales list
+</h1>
+<ul class="collection">
+{% for obj in data %}
+
+<li class="collection-item">
+    <a href="{{obj.get_absolute_url}}">
+        {{obj.transaction_id}}
+    </a>
+</li>
+
+{% endfor %}
+</ul>
+{% endblock content %}
