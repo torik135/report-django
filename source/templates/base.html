@@ -8,12 +8,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Materialize -->
-  <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-
   <!-- Custom CSS and JS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   {% block scripts %} {% endblock scripts %}
+
+  <!-- Materialize -->
+  <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+
+  <style>
+    select {
+      display: block;
+    }
+  </style>
 
   <title>Report App | {% block title %} {% endblock title %}</title>
 </head>
@@ -24,7 +30,7 @@
     {% block content %} {% endblock content %}
   </div>
 
-  
+  <script src="{% static 'js/materialize.min.js' %}" defer></script>
 </body>
 
 </html>
