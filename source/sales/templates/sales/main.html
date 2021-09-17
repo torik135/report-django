@@ -8,17 +8,17 @@ sale list
 
 {% block content %}
 <h1>
-sales list
+    sales list
 </h1>
 <ul class="collection">
-{% for obj in data %}
+    {% for obj in data %}
 
-<li class="collection-item">
-    <a href="{{obj.get_absolute_url}}">
-        {{obj.transaction_id}}
-    </a>
-</li>
+    <li class="collection-item">
+        <a href="{{obj.get_absolute_url}}">{{obj.transaction_id}}</a>
+        <!-- another way -->
+        <!-- <a href="{% url 'sales:detail' obj.pk %}">{{obj.transaction_id}}</a> -->
+    </li>
 
-{% endfor %}
+    {% endfor %}
 </ul>
 {% endblock content %}

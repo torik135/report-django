@@ -8,21 +8,31 @@
 
 
 {% block content %}
+<div>
 HOME
 <hr>
 
 <form action="" method="POST" class="col">
-{% csrf_token %}
-<div class="input-field">
-{{form|crispy}}
-</div>
-<button type="submit" class="btn waves-efffect waves-light">SEARCH</button>
+  {% csrf_token %}
+  <div class="input-field">
+    {{form|crispy}}
+  </div>
+  <button type="submit" class="btn waves-efffect waves-light">SEARCH</button>
 </form>
+<hr>
+<br>
 
+{%if sales_df %}
+{{sales_df|safe}}
+{%else%}
+<h3>no data</h3>
+{% endif %}
+
+</div>
 {% endblock content %}
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
   });

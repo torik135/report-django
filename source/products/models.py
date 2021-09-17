@@ -8,4 +8,4 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "{} rp.{} ratus ribu".format(self.name, self.price)
+        return "{}-{}".format(self.name, self.created)

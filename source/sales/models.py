@@ -20,7 +20,7 @@ class Position(models.Model):
         return super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.product.name
+        return "product:[{}] - quantity:[{}]".format(self.product.name, self.quantity)
 
 
 # Sale can have many Position

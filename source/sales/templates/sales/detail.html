@@ -7,10 +7,48 @@ detail {{object.transaction_id}}
 
 
 {% block content %}
-<h5>
-{{object.pk}}
+<!-- <h5>
+    {{object.pk}}
 </h5>
-
 {{object.transaction_id}}
+{{object.positions}}
+{{object.total_price}}
+{{object.customer}}
+{{object.salesman}}
+{{object.created}} -->
+
+<h1>
+    detail
+</h1>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <h5>{{object.pk}}</h5>
+                <h10>Transaction ID</h10>
+                <span class="card-title">{{object.transaction_id}}</span>
+                <ul class="collections">
+                    <li class="collection-item">
+                        Total Price
+                        {{object.total_price}}
+                    </li>
+                    <li class="collection-item">
+                        Customer
+                        {{object.customer}}
+                    </li>
+                    <li class="collection-item">
+                        Salesman
+                        {{object.salesman}}
+                    </li>
+                    <li class="collection-item">
+                        Date Sold
+                        {{object.created}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}

@@ -1,9 +1,12 @@
 from django.shortcuts import render
+import pandas as pd
 # from django.views.generic import ListView, DetailView
 from .models import Sale
 from .forms import SaleSearchForm
 
 def home_view(request):
+    sales_df = None
+
     form = SaleSearchForm(request.POST or None)
     title = 'home'
 
@@ -12,9 +15,19 @@ def home_view(request):
         date_to = request.POST.get('date_to')
         chart_type = request.POST.get('chart_type')
 
+        # get all object from Sale
+        queryset = Sale.objects.filter(created__date__lte=date_to, created__date__gte=date_from)
+        if len(queryset) > 0:
+            sales_df = pd.DataFrame(queryset.values())
+
+            sales_df = sales_df.to_html()
+            print(sales_df)
+        else: print('query err!')
+
     context = {
         'title': title,
-        'form': form
+        'form': form,
+        'sales_df': sales_df,
     }
     return render(request, 'sales/home.html', context=context)
 
