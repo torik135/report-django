@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-
+# from django.views.generic import ListView, DetailView
 from .models import Sale
+from .forms import SaleSearchForm
 
 def home_view(request):
+    form = SaleSearchForm(request.POST or None)
     title = 'home'
-    return render(request, 'sales/home.html', {'title': title})
+    context = {
+        'title': title,
+        'form': form
+    }
+    return render(request, 'sales/home.html', context=context)
 
 # Class-nased view
 # class SaleListView(ListView):

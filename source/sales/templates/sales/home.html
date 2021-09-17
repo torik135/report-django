@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block title %}
 {{title}}
@@ -7,5 +8,22 @@
 
 
 {% block content %}
-this works
+HOME
+<hr>
+
+<form action="" method="POST" class="col">
+{% csrf_token %}
+<div class="input-field">
+{{form|crispy}}
+</div>
+<button type="submit" class="btn waves-efffect waves-light">SEARCH</button>
+</form>
+
 {% endblock content %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+</script>
