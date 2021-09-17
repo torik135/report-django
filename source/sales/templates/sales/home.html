@@ -9,26 +9,31 @@
 
 {% block content %}
 <div>
-HOME
-<hr>
+  HOME
+  <hr>
 
-<form action="" method="POST" class="col">
-  {% csrf_token %}
-  <div class="input-field">
-    {{form|crispy}}
-  </div>
-  <button type="submit" class="btn waves-efffect waves-light">SEARCH</button>
-</form>
-<hr>
-<br>
+  <form action="" method="POST" class="col">
+    {% csrf_token %}
+    <div class="input-field">
+      {{form|crispy}}
+    </div>
+    <button type="submit" class="btn waves-efffect waves-light">SEARCH</button>
+  </form>
+  <hr>
+  <br>
 
-{%if sales_df %}
-{{sales_df|safe}}
-<hr>
-{{positions_df|safe}}
-{%else%}
-<h3>no data</h3>
-{% endif %}
+  {%if sales_df %}
+  <h4>Sales</h4>
+  {{sales_df|safe}}
+  <hr>
+  <h4>Positions</h4>
+  {{positions_df|safe}}
+  <hr>
+  <h4>Sales and Positions</h4>
+  {{merged_df|safe}}
+  {%else%}
+  <h3>no data</h3>
+  {% endif %}
 
 </div>
 {% endblock content %}
