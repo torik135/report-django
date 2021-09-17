@@ -6,6 +6,12 @@ from .forms import SaleSearchForm
 def home_view(request):
     form = SaleSearchForm(request.POST or None)
     title = 'home'
+
+    if request.method == 'POST':
+        date_from = request.POST.get('date_from')
+        date_to = request.POST.get('date_to')
+        chart_type = request.POST.get('chart_type')
+
     context = {
         'title': title,
         'form': form
