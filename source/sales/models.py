@@ -19,6 +19,13 @@ class Position(models.Model):
         self.price = self.product.price * self.quantity
         return super().save(*args, **kwargs)
 
+    def get_sales_id(self):
+        # perform reverse relationship
+        # take one object from Sale class
+        # and returning the id from the Sale table / class
+        sale_obj = self.sale_set.first()
+        return sale_obj.id
+
     def __str__(self):
         return "product:[{}] - quantity:[{}]".format(self.product.name, self.quantity)
 
