@@ -26,11 +26,22 @@
   <h4>Sales</h4>
   {{sales_df|safe}}
   <hr>
+
   <h4>Positions</h4>
   {{positions_df|safe}}
   <hr>
+
   <h4>Sales and Positions</h4>
   {{merged_df|safe}}
+  <hr>
+
+  <h4>Grouped data</h4>
+  {{grouped_df|safe}}
+  <hr>
+
+  <h4>Chart</h4>
+  <img src="data:image/png;base64, {{chart|safe}}">
+  
   {%else%}
   <h3>no data</h3>
   {% endif %}
