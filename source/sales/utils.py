@@ -40,7 +40,8 @@ def get_chart(chart_type, data, **kwargs):
         plt.pie(data = data, x='price', labels=labels)
     elif chart_type == '#3':
         print('line chart')
-        plt.plot(data['transaction_id'], data['price'])
+        # plt.plot(data['transaction_id'], data['price'])
+        sns.lineplot(x='transaction_id', y='price', data=data)
     else: print('error: invalid chart type')
 
     # sizing the fig
