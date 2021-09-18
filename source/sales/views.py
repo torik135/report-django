@@ -4,6 +4,7 @@ import pandas as pd
 from .models import Sale
 from .forms import SaleSearchForm
 from .utils import get_salesman_from_id, get_customer_from_id, get_chart
+from reports.forms import ReportForm
 
 def home_view(request):
     sales_df = None
@@ -12,7 +13,9 @@ def home_view(request):
     grouped_df = None
     chart = None
 
-    form = SaleSearchForm(request.POST or None)
+    search_form = SaleSearchForm(request.POST or None)
+    report_form = ReportForm()
+    
     title = 'home'
 
     if request.method == 'POST':
@@ -71,7 +74,8 @@ def home_view(request):
 
     context = {
         'title': title,
-        'form': form,
+        'search_form': search_form,
+        'report_form': report_form,
         'sales_df': sales_df,
         'positions_df': positions_df,
         'merged_df': merged_df,
