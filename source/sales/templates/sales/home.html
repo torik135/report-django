@@ -29,24 +29,51 @@
   <br>
 
   {%if sales_df %}
-  <h4>Sales</h4>
-  {{sales_df|safe}}
-  <hr>
 
-  <h4>Positions</h4>
-  {{positions_df|safe}}
-  <hr>
+        <h2 class="header">Sales</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <div class="card-content">{{sales_df|safe}}</div>
+        </div>
+        </div>
+    
+    
+        <h2 class="header">Positions</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <div class="card-content">{{positions_df|safe}}</div>
+        </div>
+        </div>
+      
+    
+        <h2 class="header">Merged</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <div class="card-content">{{merged_df|safe}}</div>
+        </div>
+        </div>
+  
+    
+        <h2 class="header">Grouped Data</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <div class="card-content">{{grouped_df|safe}}</div>
+        </div>
+        </div>
 
-  <h4>Sales and Positions</h4>
-  {{merged_df|safe}}
-  <hr>
 
-  <h4>Grouped data</h4>
-  {{grouped_df|safe}}
-  <hr>
 
-  <h4>Chart</h4>
-  <img src="data:image/png;base64, {{chart|safe}}" id="img">
+        <h2 class="header">Chart</h2>
+        <div class="card horizontal">
+        <div class="card-stacked">
+        <div class="card-content">
+        <img src="data:image/png;base64, {{chart|safe}}" id="img">
+        </div>
+        </div>
+        </div>
+
+
+  </div>
 
   {%else%}
   <h3>no data</h3>
@@ -64,6 +91,9 @@
       <form id="report-form">
         {% csrf_token %}
         {{report_form|crispy}}
+        {% comment %} {{report_form.name}}
+        {{report_form.remarks}} {% endcomment %}
+
         <button type="submit" class="btn waves-effect waves-light">Submit</button>
       </form>
     
