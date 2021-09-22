@@ -17,6 +17,13 @@
 <div>
   HOME
   <hr>
+  
+  {% if no_data %}
+  <div class="chip">
+    <i class="close">{{no_data}}</i>
+  </div>
+  
+  {%endif%}
 
   <form action="" method="POST" class="col">
     {% csrf_token %}
@@ -25,6 +32,8 @@
     </div>
     <button type="submit" class="btn waves-effect waves-light">SEARCH</button>
   </form>
+  <br>
+
   <hr>
   <br>
 
@@ -74,19 +83,16 @@
 
 
   </div>
-
-  {%else%}
-  <h3>no data</h3>
   {% endif %}
 
   <!-- Modal Trigger -->
-  <button data-target="modal1" class="btn modal-trigger waves-effect waves-light hid" id="report-btn">Report</button>
+  <button data-target="modal1" class="btn modal-trigger waves-effect waves-light pulse hid" id="report-btn">Report</button>
+
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content modal-body">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>Report</h4>
 
       <form id="report-form">
         {% csrf_token %}
