@@ -37,7 +37,7 @@ def get_chart(chart_type, data, **kwargs):
     elif chart_type == '#2':
         print('pie chart')
         labels = kwargs.get('labels')
-        plt.pie(data = data, x='price', labels=labels)
+        plt.pie(data=data, x='price', labels=labels)
     elif chart_type == '#3':
         print('line chart')
         # plt.plot(data['transaction_id'], data['price'])
